@@ -3,7 +3,6 @@ from .exceptions import ViewNotFound
 from .logging import logger
 from six import iteritems
 
-
 views = OrderedDict()
 
 
@@ -18,7 +17,7 @@ def register_view(view):
     try:
         view.load()
     except Exception as e:
-        logger.error('Error loading {}: {}'.format(view.get_name(), e))
+        logger.error('Error loading {}: {}'.format(view.get_name(), e), exc_info=True)
 
 
 def get_view(name):
